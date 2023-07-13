@@ -1,0 +1,991 @@
+/****************************************Basic grid setup ********************************show*************/
+
+:root {
+  --main-radius: 5px;
+  --main-padding: 5px;
+  --bg-color: #f6f7f7;
+  --head-color: #c83540;
+  --secondary-color: #909090;
+  --shadow: 0px 2px 10px rgba(85, 80, 80, 0.29);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, Helvetica Neue, sans-serif;
+  background-color: #ffffff;
+}
+
+.grid-wrapper {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  display: grid;
+  height: 60vh;
+  max-width: 94%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.4fr 0.1fr 0.4429fr 0.4429fr 0.4429fr 0.4429fr 0.4429fr 0.4429fr;
+  grid-template-areas:
+    "topnav"
+    "nav"
+    "navbanner"
+    "main"
+    "header"
+    "carouselsearch"
+    "itemfilter"
+    "footer";
+  grid-gap: 0.2rem;
+  font-size: 12px;
+  color: #ffffff;
+  text-align: center;
+
+}
+
+
+/*
+"topnav"
+      "topnavsearch"
+      "navbanner"
+      "header"
+      "carouselsearch"
+      "itemfilter"
+      "nav";
+*/
+
+topnav {
+  background: #ffffff;
+  grid-area: topnav;
+  border-radius: var(--main-radius);
+  /*padding-top: var(--main-padding);*/
+  z-index: 999;
+}
+
+topnavsearch {
+  background: #ffffff;
+  grid-area: topnavsearch;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+  border-top: solid lightgray 1px;
+  border-bottom: solid lightgray 1px;
+}
+
+nav {
+  background: #ffffff;
+  /*background: #ffffff;*/
+  grid-area: nav;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+navbanner {
+  background: #ffffff;
+  grid-area: navbanner;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+main {
+  background: #ffffff;
+  grid-area: main;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+
+#header {
+  background: #ffffff;
+  grid-area: header;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+carouselsearch {
+  background: #ffffff;
+  grid-area: carouselsearch;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+  /*margin-bottom: 10em;*/
+}
+
+itemfilter {
+  background: #ffffff;
+  grid-area: itemfilter;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+footer {
+  background: #ffffff;
+  grid-area: footer;
+  border-radius: var(--main-radius);
+  padding-top: var(--main-padding);
+}
+
+
+@media only screen and (min-width: 1050px) {
+  topnavsearch {
+    display: none;
+  }
+}
+
+/******************************** Logo **********************************/
+.topnav-wrapper {
+  display: flex;
+  /*width:1230px;*/
+  width: 92%;
+  height: 13.2em;
+}
+
+.topnav-wrapper .logo {
+  padding-top: var(--main-padding);
+  background-color: #ffffff;
+}
+
+.topnav-wrapper .logo img {
+  height: 100px;
+  width: 135px;
+  margin-left: 29px;
+}
+
+
+/******************************** Desktop Search **********************************/
+
+.search-field {
+  padding-top: var(--main-padding);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  z-index: 999;
+}
+
+.search-field-btn {
+  margin-top: 38px;
+  width: 40px;
+  height: 36px;
+  border: none;
+  margin-left: -30px;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.icon {
+  color: #182e93;
+}
+
+#myInput {
+  color: #123E8C;
+  font-weight: 400;
+  outline: none;
+  font-size: 16px;
+  /* Padding: top-right-bottom-left */
+  padding: 35px 0px 5px 5px;
+  border: none;
+  border-bottom: 1px solid #123E8C;
+  border-bottom-color: #123E8C !important;
+  width: 90%;
+  height: fit-content;
+}
+
+.filterDiv {
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 2px;
+  display: none;
+}
+
+.searchshow {
+  display: flex;
+  justify-content: center;
+}
+
+.element-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/********************************** NAVBAR *******************************************/
+
+/**************Topnav********************/
+.mobile-topnav-wrapper {
+  display: none;
+}
+
+/**************Banner image********************/
+
+.banner-img {
+  margin-top: 7.5em;
+  display: block;
+  width: 100%;
+  min-height: 22em;
+  max-height: 22em;
+  border-radius: 25px 25px 8px 8px;
+  object-fit: cover;
+  object-position: center;
+  animation: fade-in 2s cubic-bezier(.39, .575, .565, 1) both;
+}
+
+.sticky {
+  position: fixed;
+}
+
+.desktop-list {
+  display: flex;
+  padding-left: 70px;
+}
+
+.desktop-list a {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.navbar {
+  width: 91.80%;
+  max-width: none;
+  border-radius: 25px 25px 0 0;
+  padding: 15px 20px;
+  align-items: center;
+  background-color: #011E4E;
+  top: 110px;
+  z-index: 999;
+}
+
+.navbar ul {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.navbar ul li {
+  display: inline-block;
+  margin: 0 30px;
+}
+
+.mobile-list {
+  display: none;
+}
+
+/****************Navbr cart ******************/
+
+.cart-link img {
+  height: 1.4em;
+}
+
+.cart-link .outer-span {
+  background-color: #D91013;
+  padding: 0.4em;
+  border-radius: 20em;
+  cursor: pointer;
+}
+
+.cart-link .inner-span {
+  color: #ffffff;
+  padding: 0.2em;
+}
+
+
+
+/************************************************ Carousel *******************************************************/
+
+/* Bootstrap 4 Carousel */
+
+.items {
+  display: none;
+}
+
+.carousel-item .col-lg-3 img.img-fluid {
+  width: 272px;
+  height: 192px;
+  object-fit: fill;
+}
+
+.container {
+  margin: 10px auto;
+  margin-bottom: 10px;
+}
+
+.mobile-container {
+  margin: 150px auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* medium - display 2  */
+@media (min-width: 768px) {
+
+  .carousel-inner .carousel-item-right.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(50%);
+  }
+
+  .carousel-inner .carousel-item-left.active,
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-50%);
+  }
+}
+
+/* large - display 3 */
+@media (min-width: 992px) {
+
+  .carousel-inner .carousel-item-right.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+
+  .carousel-inner .carousel-item-left.active,
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .carousel-inner .carousel-item>div {
+    display: none;
+  }
+
+  .carousel-inner .carousel-item>div:first-child {
+    display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left {
+  transform: translateX(0);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: gray !important;
+  z-index: 0;
+  height: 2em;
+  top: 6.5em;
+}
+
+/**************************************************Header************************************************/
+
+/*** 1.9em for display ****/
+
+.header {
+  display:flex;
+  color: #123e8c;
+  font-size: 2.5rem;
+  margin-top: .5em;
+  padding-left: .6em;
+  justify-content: center;
+}
+
+.header-hr {
+  color: #2395ff;
+  /*width: 100%;*/
+  border: .1px solid;
+  margin-top: 0%;
+  margin-bottom: 1.7em;
+}
+
+/**************************************************Footer*********************************************/
+
+.text-center.text-lg-start.text-white {
+  background-color: #011E4E;
+  /* additional styling for these classes goes here */
+}
+
+.justify-content-between {
+  background-color: #011E4E
+}
+
+.social-icon{
+  font-size: 35px;
+}
+
+/**************************************************Mobile*********************************************/
+
+/***** Navbar + Header + Banner Changes *****/
+
+
+@media only screen and (max-width: 1050px) {
+
+  .navbar .desktop-list,
+  .desktop-carousel,
+  .topnav-wrapper {
+    display: none;
+  }
+
+  .banner-container {
+    padding-right: 2em;
+  }
+
+  .banner-img {
+    /*Top-right-bottom-left*/
+    margin: 0 0 .5em 1em;
+
+    min-height: 8em;
+    height: 11em;
+    border-radius: 8px;
+    animation: none;
+  }
+
+  .header {
+    font-size: 1.5rem;
+    margin-top: .5em;
+    text-align: left;
+    padding-left: .5em;
+  }
+
+  .header-hr {
+    color: #2395ff;
+    width: 92%;
+    border: .1px solid;
+    margin-bottom: 1.7em;
+    margin-left: 1.2em;
+  }
+
+
+  .navbar {
+    background-color: transparent;
+  }
+
+  .mobile-carousel {
+    display: contents;
+  }
+
+  .mobile-list {
+    background-color: #019FE3;
+    color: whitesmoke;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
+  .mobile-list i {
+    font-size: 5vmin;
+    cursor: pointer;
+  }
+
+  .mobile-list li:hover i {
+    color: aqua;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+
+  .navbar ul li {
+    display: inline-block;
+    margin: 0 20px;
+  }
+
+}
+
+
+/************ Filter search **************/
+
+.topsearch-wrapper {
+  display: grid;
+  margin-bottom: .5em
+}
+
+.btn-flex {
+  display: flex;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: center;
+  scrollbar-width: none;
+  height: 32px;
+  margin-left: 1em;
+}
+
+/*
+.btn-wrapper {
+  border-radius: 8px;
+}
+*/
+/* Style the buttons */
+.btn {
+  border-radius: 8px;
+  margin-right: 6px;
+  border: none;
+  outline: none;
+  background-color: #019FE3;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #afcaee;
+}
+
+.btn.active-now {
+  background-color: #011E4E;
+  color: white;
+}
+
+/***********************************/
+
+.appcontainer {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.appgrid {
+  display: grid;
+}
+
+.appbtnprev {
+  background-color: gray !important;
+  margin-left: 1em;
+}
+
+.appbtnnxt {
+  background-color: gray !important;
+  margin-right: 1em;
+}
+
+.imglink {
+  width: 272px;
+  height: 192px;
+}
+
+.carouselfil {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/************************** Drop Down ******************************/
+
+/*-----------------------------------------------------------------------*/
+.filtercarousuel {
+  display: none;
+}
+
+/**** Dropdown filter *******/
+
+.dropbtn {
+  background-color: #019FE3;
+  color: white;
+  padding: 0px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #01c1e3;
+}
+
+.dropdown {
+  display: flex;
+  margin-left: 1em;
+  margin-top: 5px;
+  margin-bottom: .5em;
+  height: 32px;
+}
+
+.dropdown-content {
+  margin-top: 40px;
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 999;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.show {
+  display: block;
+}
+
+
+/********************* DESKTOP SHOPPING DROPDOWN ***********************************/
+
+.desktop-dropbtn:hover,
+.desktop-dropbtn:focus {
+  color: #01c1e3;
+}
+
+.desktop-dropdown {
+  display: flex;
+  margin-left: 1em;
+  margin-top: 5px;
+  margin-bottom: .5em;
+}
+
+
+@media only screen and (min-width: 1050px) {
+  .dropdown-content {
+    margin-top: 15px;
+  }
+  .dropdown-content a {
+    /*TOP-RIGHT-BOT-LEFT*/
+    margin-right: 7em;
+    text-align: left;
+  }
+}
+
+
+/********** Mobile Logo ************/
+
+.mobile-logo {
+  display: none;
+}
+
+/****** Grid Layout ********/
+
+
+@media only screen and (max-width: 1050px) {
+
+  .filtercarousuel {
+    display: contents;
+  }
+
+  .mobile-logo {
+    display: flex;
+    padding: 0 0 0 12px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .image-div {
+    width: 7em;
+  }
+
+  .mobile-logo img {
+    width: 7em;
+    height: 100%;
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  footer {
+    display: none;
+  }
+
+  .mobile-topnav-wrapper {
+    display: flex;
+  }
+
+  .grid-wrapper {
+    max-width: 100%;
+    /*Top-Right-Bottom-Left*/
+    padding: 0;
+    /*Row-Column*/
+    grid-gap: 0.1rem 0rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 0.1fr 0.3fr 0.15fr 0.95fr 0.95fr 0.95fr;
+    grid-template-areas:
+      "topnav"
+      "topnavsearch"
+      "navbanner"
+      "header"
+      "carouselsearch"
+      "itemfilter"
+      "nav";
+  }
+}
+
+/*
+
+*/
+
+.outer-div-icon {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-div-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.inner-div-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.outer-div-login {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-div-login {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.inner-div-login img {
+  width: 100%;
+  height: 100%;
+}
+
+/**************************** Search now ******************************
+
+/****************** Modal ****************************/
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.modal-content p {
+  margin-bottom: 0;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Search bar styles */
+.search-bar {
+  margin-top: 20px;
+}
+
+.search-bar input[type="text"] {
+  padding: 5px;
+  width: 200px;
+}
+
+.search-bar input[type="button"] {
+  padding: 5px 10px;
+}
+
+/*********************************** MODAL LOGIN / REGSISTER *******************************/
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.loginbtn {
+  background-color: #00A1ED;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  color:white;
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+  float: left;
+  margin-left: 1em;
+}
+
+/* Additional CSS for the Login heading */
+.txtcontainer span {
+  text-align: center;
+  position: relative;
+}
+
+.txtcontainer h4 {
+  font-size: 60px;
+  margin-top: 0;
+  color: #00A1ED;
+  float: left;
+  margin-left: 0.25em;
+}
+
+.input-container {
+  font-size: 16px;
+  padding: 16px;
+  color: #000000;
+}
+
+.end-container {
+  /* background-color: #ffffff; */
+  color: #000000;
+  font-size: 15px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+  margin-right: 1.2em;
+}
+
+span.psw a {
+  color: #0713c0;
+}
+
+label {
+  display: flex;
+  margin-bottom: 0;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+
+  .cancelbtn {
+    width: 100%;
+  }
+}
