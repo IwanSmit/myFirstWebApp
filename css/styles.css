@@ -1,4 +1,4 @@
-/****************************************Basic grid setup ********************************show*************/
+/****************************************Basic grid setup *********************************************/
 
 :root {
   --main-radius: 5px;
@@ -449,6 +449,7 @@ a {
   }
 
   .header {
+    display: block;
     font-size: 1.5rem;
     margin-top: .5em;
     text-align: left;
@@ -633,6 +634,7 @@ a {
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  font-size: 16px;
 }
 
 .show {
